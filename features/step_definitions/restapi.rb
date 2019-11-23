@@ -52,6 +52,10 @@ Given(/^When I make a post in "([^"]*)"$/) do |route|
   @response = HTTParty.post("http://api.topcoder.com/#{route}")
 
   @results = HTTParty.post("http://api.topcoder.com/v2/auth", options)
+
+  results = HTTParty.get("http://some.api", :headers => {
+        "Content-Type" => "application/json"
+  })
 end
 
 
