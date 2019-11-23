@@ -40,6 +40,21 @@ Then(/^I will perform query in the page$/) do
 
 end
 
+Given(/^When I make a post in "([^"]*)"$/) do |route|
+  options = { :body =>
+                  [{ :username => 'my',
+                     :password => 'password'
+                   }].to_json
+  }
+
+
+
+  @response = HTTParty.post("http://api.topcoder.com/#{route}")
+
+  @results = HTTParty.post("http://api.topcoder.com/v2/auth", options)
+end
+
+
 Given(/^When I make a get in "([^"]*)"$/) do |route|
   @response = HTTParty.get("http://api.stackexchange.com/#{route}")
 end
